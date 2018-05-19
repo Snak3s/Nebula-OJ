@@ -1,0 +1,10 @@
+<?php
+	$lang=$_POST["lang"];
+	if ($lang=="cpp")
+		$lang="C++";
+	if ($lang=="c")
+		$lang="C";
+	if ($lang=="pas")
+		$lang="Pascal";
+	submit($_POST["pid"],$_POST["program"],$lang);
+?>

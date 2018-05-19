@@ -1,0 +1,11 @@
+<?php
+	checkadmin();
+?>
+<div class="ui segments">
+	<div class="ui blue segment"><div class="ui medium header">管理员</div></div>
+	<div class="ui clearing segment"><?php showadmin();?></div>
+</div>
+<div class="ui segments">
+	<div class="ui blue segment"><div class="ui medium header">公告</div></div>
+	<?php showtitle();?>
+</div>

@@ -1,0 +1,113 @@
+<?php
+	if (getaccount($_GET["id"])=="")
+	{
+		throwerror("无此用户。");
+		return;
+	}
+?>
+<div class="ui grid">
+	<div class="ui eight wide column">
+		<div class="ui segments">
+			<div class="ui blue top attached segment">
+				<div class="ui left medium header">
+					<?php echo getaccount($_GET["id"]);?>
+				</div>
+				<?php
+					if (getuid($_SESSION["account"])==$_GET["id"])
+						echo "<a href=\"/sex/".$_GET["id"]."\">";
+				?>
+				<div class="ui right corner blue mini label"><?php getusersexual($_GET["id"]);?></div>
+				<?php
+					if (getuid($_SESSION["account"])==$_GET["id"])
+						echo "</a>";
+				?>
+			</div>
+			<div class="ui attached segment">
+				<div class="ui left green ribbon label">
+					<i class="check icon"></i>通过 <?php echo getuseraccepted($_GET["id"]);?> 题
+				</div>
+				<?php
+					if (isadmin(getaccount($_GET["id"])))
+					{
+						echo "<div class=\"ui orange label\">管理员</div>";
+						if (getuid($_SESSION["account"])==1&&$_GET["id"]!=1)
+							echo "<a href=\"/move/".getaid(getaccount($_GET["id"]))."\"><div class=\"ui red label\">取消管理员权限</div></a>";
+					}
+					else
+					{
+						echo "<div class=\"ui blue label\">普通用户</div>";
+						if (getuid($_SESSION["account"])==1&&$_GET["id"]!=1)
+							echo "<a href=\"/add/".$_GET["id"]."\"><div class=\"ui red label\">设置管理员权限</div></a>";
+					}
+				?>
+			</div>
+			<div class="ui attached segment">
+				<?php getuseracdetail($_GET["id"]);?>
+			</div>
+		</div>
+		<div class="ui segments">
+			<div class="ui blue top attached segment">
+				<div class="ui left medium header">
+					个性签名
+				</div>
+			</div>
+			<?php					
+				if (getuid($_SESSION["account"])!=$_GET["id"])
+					echo "<div class=\"ui bottom attached segment\">".viewmotto($_GET["id"])."</div>";
+				else
+				{
+					echo "<div class=\"ui container\" id=\"view\"><div class=\"ui attached segment\">".viewmotto($_GET["id"])."</div><div class=\"ui bottom attached segment\"><div onclick=\"javascript:edit();\" class=\"ui blue button\">修改</div></div></div>";
+					echo "<div class=\"ui bottom attached segment\" id=\"edit\" style=\"display: none;\">";
+					echo "<div class=\"ui form\"><div class=\"ui field\"><div class=\"ui reply form\">";
+					echo "<textarea id=\"motto\" contenteditable=\"true\" spellcheck=\"false\" style=\"height: 20em; width: 100%; font-family: inherit;\">".getmotto($_GET["id"])."</textarea>";
+					echo "</div></div>";
+					echo "<div onclick=\"javascript:motto();\" class=\"ui blue button\">保存</div><div onclick=\"javascript:edit();\" class=\"ui gray button\">取消</div></div>";
+					echo "</div>";
+				}
+			?>
+		</div>
+	</div>
+	<div class="ui eight wide column">
+		<div class="ui segments">
+			<div class="ui blue top attached segment">
+				<div class="ui left medium header">
+					统计
+				</div>
+			</div>
+			<div class="ui bottom attached segment">
+				<canvas id="chart" width="100%" height="100%"></canvas>
+				<script>
+				var ctx=document.getElementById("chart").getContext('2d');
+				var myChart=new Chart(ctx,
+				{
+					type:'pie',
+					data:{
+						labels:["Accepted", "Wrong Answer", "Time Limit Exceeded", "Memory Limit Exceeded",
+							"Runtime Error", "Compile Error", "Judgement Failed"],
+						datasets:[{
+							data:[<?php echo getsubmissioninfo($_GET["id"])?>],
+							backgroundColor:[
+								'rgba(33, 186, 69, 1)',
+								'rgba(219, 40, 40, 1)',
+								'rgba(242, 113, 28, 1)',
+								'rgba(194, 90, 22, 1)',
+								'rgba(251, 189, 8, 1)',
+								'rgba(186, 186, 186, 1)',
+								'rgba(165, 103, 63, 1)'
+							]
+						}]
+					},
+					options:{
+						legend:{
+							display:true,
+							labels:{
+								usePointStyle:true
+							}
+						}
+					}
+				});
+				</script>
+			</div>
+		</div>
+	</div>
+</div>

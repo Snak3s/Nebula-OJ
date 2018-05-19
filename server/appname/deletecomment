@@ -1,0 +1,3 @@
+<?php
+	deletecomment($_GET["id"]);
+?>

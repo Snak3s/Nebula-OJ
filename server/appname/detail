@@ -1,0 +1,69 @@
+<?php
+	if (announcementnotexist($_GET["id"]))
+	{
+		throwerror("无此公告。");
+		return;
+	}
+?>
+<div class="ui segments">
+<div class="ui top attached blue segment">	
+	<div class="ui medium header">
+	<?php
+		echo title($_GET["id"]);
+	?>
+	<?php
+		if (isadmin($_SESSION["account"]))
+			echo "<a href=\"/modify/".$_GET["id"]."\">\n<div class=\"ui red circular label\">\n<i class=\"write icon\" style=\"margin-right: 0;\"></i>\n</div>\n</a>";
+	?>
+	</div>
+	<div class="ui sub header" style="margin-top: -1em;">
+	<?php
+		echo timepost($_GET["id"]);
+	?>
+	</div>
+</div>
+<div class="ui bottom attached segment" id="maintext">
+	<?php echo mdtext($_GET["id"]);?>
+</div>
+</div>
+<div class="ui segments">
+	<div class="ui top attached blue segment">
+		<div class="ui medium header">评论区</div>
+	</div>
+	<?php
+		showcomment($_GET["id"]);
+	?>
+</div>
+<div class="ui segments"> 
+	<div class="ui top attached blue segment">
+		<div class="ui medium header">发表评论</div>
+	</div>
+	<div class="ui bottom attached segment">
+	<?php
+		if (!islogin())
+		{
+			echo "请先<a href=\"/login/\">登录</a>。";
+			echo "</div></div>";
+			return;
+		}
+	?>
+	<div class="ui form">
+	<div class="field">
+		<div class="ui small header">昵称</div>
+		<div class="ui left icon corner labeled input">
+			<input type="text" id="username" value="<?php echo $_SESSION['account'];?>"/>
+			<i class="user icon"></i>
+			<div class="ui corner label"><i class="asterisk icon"></i></div>
+		</div>
+	</div>
+	<div class="field">
+		<div class="ui small header">内容</div>
+		<div class="ui reply form">
+		<textarea id="comment" contenteditable="true"></textarea>
+		</div>
+	</div>
+		<div class="ui blue button" onclick="javascript:comment();">评论</div>
+		<div id="tip" class="ui left pointing red basic label" style="opacity: 0;"></div>
+	</div>
+	</div>
+</div>

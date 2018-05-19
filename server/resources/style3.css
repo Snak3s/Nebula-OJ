@@ -1,0 +1,66 @@
+@font-face
+{
+	font-family: 'Consolas';
+	src: url('/resources/upload/consola.ttf') format('truetype');
+}
+@font-face
+{
+	font-family: 'Consolas';
+	font-weight: bold;
+	src: url('/resources/upload/consolab.ttf') format('truetype');
+}
+@font-face
+{
+	font-family: 'Consolas';
+	font-style: italic;
+	src: url('/resources/upload/consolai.ttf') format('truetype');
+}
+@font-face
+{
+	font-family: 'Consolas';
+	font-weight: bold;
+	font-style: italic;
+	src: url('/resources/upload/consolaz.ttf') format('truetype');
+}
+img
+{
+	max-width: 100%;
+	text-align: center;
+	display: block;
+	margin: 0 auto;
+}
+table
+{
+	width: 100%;
+	
+}
+a:focus
+{
+	outline: none;
+	-moz-outline: none;
+}
+pre
+{
+	font-family: Consolas;
+	color: #FFFFFF;
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -pre-wrap;
+	white-space: -o-pre-wrap;
+	word-wrap: break-word;
+	background-color: #333333;
+	border-radius: 0.5em;
+	padding: 0.5em;
+}
+code
+{
+	font-family: Consolas;
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -pre-wrap;
+	white-space: -o-pre-wrap;
+	word-wrap: break-word;
+	color: #FFFFFF;
+	background-color: #333333;
+	border-radius: 0.2em;
+}

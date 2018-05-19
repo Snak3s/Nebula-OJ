@@ -1,0 +1,25 @@
+<?php
+	if (isadmin($_SESSION["account"]))
+	{
+		$count=count($_FILES["file"]["name"]);
+		for ($i=0;$i<$count;$i++)
+			if ($_FILES["file"]["error"][$i]>0)
+			{
+				header("location:/uploadfile/");
+				return;
+			}
+		for ($i=0;$i<$count;$i++)
+			echo $_FILES["file"]["name"][$i]."\n";
+		for ($i=0;$i<$count;$i++)
+			if (file_exists("/upload/".$_FILES["file"]["name"][$i]))
+			{
+				header("location:/uploadfile/");
+				return;
+			}
+		for ($i=0;$i<$count;$i++)
+			move_uploaded_file($_FILES["file"]["tmp_name"][$i],"upload/".$_FILES["file"]["name"][$i]);
+		header("location:/finishupload/");
+	}
+	else
+		header("location:/login/");
+?>

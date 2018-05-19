@@ -1,0 +1,40 @@
+<?php
+	$p=$_GET["p"];
+	if ($p<=0||$p==null)
+		$p=1;
+	$tp=getpagesnum();
+	$tp=floor(($tp+29)/30);
+	if ($p>$tp)
+		$p=$tp;
+?>
+<div class="ui segments">
+	<div class="ui blue clearing top attached segment">
+		<div class="ui container">
+			<div class="ui left floated medium header" style="margin: 0;">
+				题目列表
+			</div>
+			<?php
+				if (isadmin($_SESSION["account"]))
+					echo "<a href=\"/edit/0\"><div class=\"ui blue label\" style=\"float: right;\">新建题目</div></a>";
+			?>
+			<div style="clear: both;"></div>
+		</div>
+		第 <?php echo $p;?> 页
+	</div>
+	<?php
+		showproblems($_GET["p"]);
+	?>
+</div>
+<div class="ui clearing segment">
+	<?php
+		if ($p>1)
+			echo "<a class=\"ui blue left floated icon circular button\" href=\"/problems/".($p-1)."\"><i class=\"chevron left icon\"></i></a>";
+		else
+			echo "<div class=\"ui gray left floated icon circular button\"><i class=\"chevron left icon\"></i></div>";
+		if ($p<$tp)
+			echo "<a class=\"ui blue right floated icon circular button\" href=\"/problems/".($p+1)."\"><i class=\"chevron right icon\"></i></a>";
+		else
+			echo "<div class=\"ui gray right floated icon circular button\"><i class=\"chevron right icon\"></i></div>";
+		echo "<div class=\"clear\"></div>";
+	?>
+</div>

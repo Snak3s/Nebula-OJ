@@ -1,0 +1,28 @@
+<div class="ui segments">
+	<div class="ui top attached center aligned segment">
+		<img class="circular image" src="/resources/favicon.ico" style="border-radius: 50%;"></img>
+	</div>
+	<div class="ui bottom attached center aligned medium header">Nebula OJ</div>
+</div>
+<div class="ui segments">
+	<div class="ui top attached segment">
+		<div class="ui small header">
+			前往题目
+		</div>
+	</div>
+	<div class="ui clearing bottom attached segment">
+		<div class="ui left icon input">
+			<i class="search icon"></i>
+			<input id="pid" placeholder="题目编号" style="max-width: 10em;"/>
+		</div>
+		<div class="ui right floated button" onclick="javascript:window.location.href='/problem/'+document.getElementById('pid').value;">跳转</div>
+	</div>
+</div>
+<div class="ui segments">
+	<div class="ui top attached segment">
+		由 <a href="https://github.com/Snak3s/Nebula-OJ">Nebula OJ</a> 强力驱动
+	</div>
+	<div class="ui bottom attached segment">
+		采用 <a href="http://semantic-ui.cn">Semantic UI</a> 框架
+	</div>
+</div>

@@ -1,0 +1,14 @@
+<div class="ui segments">
+	<div class="ui blue segment"><div class="ui medium header">上传</div></div>
+	<div class="ui segment">
+		<form class="ui form" name='upload' method="POST" action='/tryupload/' enctype="multipart/form-data">
+			<div class="ui field"><div class="ui small header">选择文件</div>
+			<div class="ui input"><input type='file' name='file[]' value='' multiple/></div></div>
+			<input type='submit' name='sub' value='上传' class="ui blue button"/>
+		</form>
+	</div>
+</div>
+<div class="ui segments">
+	<div class="ui top attached blue segment"><div class="ui medium header">已上传文件</div></div>
+	<?php showuploaded();?>
+</div>

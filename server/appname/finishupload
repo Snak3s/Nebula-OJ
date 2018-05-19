@@ -1,0 +1,5 @@
+<div class="ui blue segment"><div class="ui medium header">上传成功</div></div>
+<div class=“ui segments">
+	<div class="ui top attached blue segment"><div class="ui medium header">已上传文件</div></div>
+	<?php showuploaded();?>
+</div>

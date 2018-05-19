@@ -1,0 +1,3 @@
+<?php
+	moveadmin($_GET["id"]);
+?>

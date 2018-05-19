@@ -1,0 +1,101 @@
+<?php
+	$title=getprobtitlecode($_GET["id"]);
+	if (substr($title,0,7)=="hidden:")
+		if (!isadmin($_SESSION["account"]))
+			header("location:/edit/0");
+	if (substr($title,0,8)=="limited:")
+		if (getuid($_SESSION["account"])!=1)
+			header("location:/edit/0");
+?>
+<div class="ui segments">
+<div class="ui top attached blue segment">
+	<div class="ui medium header">
+		编辑题目
+	</div>
+</div>
+<div class="ui bottom attached clearing segment">
+	<div class="ui form">
+	<div class="field">
+		<div class="ui small header">题目编号</div>
+		<div class="ui left icon corner labeled input">
+			<input type="text" id="id" value="<?php echo $_GET["id"];?>"/>
+			<i class="write icon"></i>
+			<div class="ui corner label"><i class="asterisk icon"></i></div>
+		</div>
+	</div>
+	<div class="field">
+		<div class="ui small header">题目标题</div>
+		<div class="ui left icon corner labeled input">
+			<input type="text" id="title" value="<?php echo getprobtitlecode($_GET["id"]);?>"/>
+			<i class="write icon"></i>
+			<div class="ui corner label"><i class="asterisk icon"></i></div>
+		</div>
+	</div>
+	<div class="field">
+		<div class="ui small header">时间限制</div>
+		<div class="ui left icon corner labeled input">
+			<input type="text" id="timelimit" value="<?php echo getprobtimelimit($_GET["id"]);?>"/>
+			<i class="write icon"></i>
+			<div class="ui corner label"><i class="asterisk icon"></i></div>
+		</div>
+	</div>
+	<div class="field">
+		<div class="ui small header">空间限制</div>
+		<div class="ui left icon corner labeled input">
+			<input type="text" id="memorylimit" value="<?php echo getprobmemorylimit($_GET["id"]);?>"/>
+			<i class="write icon"></i>
+			<div class="ui corner label"><i class="asterisk icon"></i></div>
+		</div>
+	</div>
+	<div class="ui clearing field">
+		<div class="ui small header">题目描述
+		<a class="ui left floated blue label" onclick="javascript:preview('statement');">预览</a>
+		</div>
+		<div class="ui reply form">
+		<textarea id="statement" contenteditable="true" style="font-family: inherit;"><?php echo getprobstatementcode($_GET["id"]);?></textarea>
+		</div>
+	</div>
+	<div class="ui clearing field">
+		<div class="ui small header">输入格式
+		<a class="ui left floated blue label" onclick="javascript:preview('input');">预览</a>
+		</div>
+		<div class="ui reply form">
+		<textarea id="input" contenteditable="true" style="font-family: inherit;"><?php echo getprobinputcode($_GET["id"]);?></textarea>
+		</div>
+	</div>
+	<div class="ui clearing field">
+		<div class="ui small header">输出格式
+		<a class="ui left floated blue label" onclick="javascript:preview('output');">预览</a>
+		</div>
+		<div class="ui reply form">
+		<textarea id="output" contenteditable="true" style="font-family: inherit;"><?php echo getproboutputcode($_GET["id"]);?></textarea>
+		</div>
+	</div>
+	<div class="ui clearing field">
+		<div class="ui small header">样例
+		<a class="ui left floated blue label" onclick="javascript:preview('sample');">预览</a>
+		</div>
+		<div class="ui reply form">
+		<textarea id="sample" contenteditable="true" style="font-family: inherit;"><?php echo getprobsamplecode($_GET["id"]);?></textarea>
+		</div>
+	</div>
+	<div class="ui clearing field">
+		<div class="ui small header">数据范围与提示
+		<a class="ui left floated blue label" onclick="javascript:preview('constraints');">预览</a>
+		</div>
+		<div class="ui reply form">
+		<textarea id="constraints" contenteditable="true" style="font-family: inherit;"><?php echo getprobconstraintscode($_GET["id"]);?></textarea>
+		</div>
+	</div>
+	<div class="ui blue button" onclick="javascript:post();">发布</div>
+	<div id="tip" class="ui left pointing green basic label" style="opacity: 0;"></div>
+	</div>
+</div>
+</div>
+<div class="ui segments"> 
+	<div class="ui top attached blue segment">
+		<div class="ui medium header">预览区</div>
+	</div>
+	<div class="ui bottom attached segment" id="preview">
+	</div>
+</div>

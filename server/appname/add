@@ -1,0 +1,3 @@
+<?php
+	addadmin($_GET["id"]);
+?>

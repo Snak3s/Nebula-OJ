@@ -1,0 +1,98 @@
+<?php
+	if (probnotexist($_GET["id"]))
+	{
+		throwerror("无此题目。");
+		return;
+	}
+?>
+<div class="ui centered large header">
+	<?php echo getprobtitle($_GET["id"]);?>
+</div>
+<div class="ui center aligned container">
+	<div class="ui label">时间限制：<?php echo getprobtimelimit($_GET["id"]);?> ms</div>
+	<div class="ui label">空间限制：<?php echo getprobmemorylimit($_GET["id"]);?> MiB</div>
+	<?php
+		if (islogin())
+			if (isadmin($_SESSION["account"]))
+				echo "<a class=\"ui blue label\" href=\"/edit/".$_GET["id"]."\">编辑</a>";
+	?>
+</div>
+<div class="ui segments">
+	<div class="ui blue top attached segment">
+		<div class="ui medium header">
+			题目描述
+		</div>
+	</div>
+	<div class="ui bottom attached segment">
+		<?php echo getprobstatement($_GET["id"]);?>
+	</div>
+</div>
+<div class="ui segments">
+	<div class="ui blue top attached segment">
+		<div class="ui medium header">
+			输入格式
+		</div>
+	</div>
+	<div class="ui bottom attached segment">
+		<?php echo getprobinput($_GET["id"]);?>
+	</div>
+</div>
+<div class="ui segments">
+	<div class="ui blue top attached segment">
+		<div class="ui medium header">
+			输出格式
+		</div>
+	</div>
+	<div class="ui bottom attached segment">
+		<?php echo getproboutput($_GET["id"]);?>
+	</div>
+</div>
+<div class="ui segments">
+	<div class="ui blue top attached segment">
+		<div class="ui medium header">
+			样例
+		</div>
+	</div>
+	<div class="ui bottom attached segment">
+		<?php echo getprobsample($_GET["id"]);?>
+	</div>
+</div>
+<div class="ui segments">
+	<div class="ui blue top attached segment">
+		<div class="ui medium header">
+			数据范围与提示
+		</div>
+	</div>
+	<div class="ui bottom attached segment">
+		<?php echo getprobconstraints($_GET["id"]);?>
+	</div>
+</div>
+<div class="ui segments">
+	<div class="ui blue top attached segment">
+		<div class="ui medium header">
+			提交
+		</div>
+	</div>
+	<div class="ui bottom attached segment">
+		<div class="ui form">
+			<div class="field">
+				<div class="ui small header">源代码
+				<a id="cpp" class="ui left floated blue label" onclick="javascript:chlang('cpp');">C++</a>
+				<a id="c" class="ui left floated gray label" onclick="javascript:chlang('c');">C</a>
+				<a id="pas" class="ui left floated gray label" onclick="javascript:chlang('pas');">Pascal</a>
+				</div>
+				<div class="ui reply form">
+				<div class="ui segment" id="submission" contenteditable="true" spellcheck="false" style="height: 20em; width: 100%; font-size: inherit;"></div>
+				<script src="/resources/ace/ace.js"></script>
+				<script>
+					var editor=ace.edit("submission");
+					editor.setTheme("ace/theme/tomorrow");
+					editor.session.setMode("ace/mode/c_cpp");
+				</script>
+				</div>
+			</div>
+			<div class="ui blue button" onclick="javascript:submit();">提交</div>
+			<div id="tip" class="ui left pointing red basic label" style="opacity: 0;"></div>
+		</div>
+	</div>
+</div>

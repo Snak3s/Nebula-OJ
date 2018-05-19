@@ -1,0 +1,35 @@
+<div class="ui segments">
+<div class="ui top attached blue segment">
+	<div class="ui medium header">
+		修改
+	</div>
+</div>
+<div class="ui bottom attached clearing segment">
+	<div class="ui form">
+	<div class="field">
+		<div class="ui small header">标题</div>
+		<div class="ui left icon corner labeled input">
+			<input type="text" id="title" value="<?php echo title($_GET["id"]);?>"/>
+			<i class="write icon"></i>
+			<div class="ui corner label"><i class="asterisk icon"></i></div>
+		</div>
+	</div>
+	<div class="field">
+		<div class="ui small header">内容</div>
+		<div class="ui reply form">
+		<textarea id="editor" contenteditable="true" style="font-family: inherit;"><?php echo mdcode($_GET["id"]);?></textarea>
+		</div>
+	</div>
+		<div class="ui left floated blue button" onclick="javascript:preview();">预览</div>
+		<div class="ui right floated blue button" onclick="javascript:post();">发布</div>
+		<div style="float: right;"><div id="tip" class="ui right pointing green basic label" style="opacity: 0;"></div></div>
+	</div>
+</div>
+</div>
+<div class="ui segments"> 
+	<div class="ui top attached blue segment">
+		<div class="ui medium header">预览区</div>
+	</div>
+	<div class="ui bottom attached segment" id="preview">
+	</div>
+</div>

@@ -1,0 +1,60 @@
+php_value display_errors Off
+php_flag magic_quotes 1
+php_flag magic_quotes_gpc 1
+php_value mbstring.http_input auto
+php_value date.timezone Asia/Shanghai
+php_value post_max_size 1024M
+php_value upload_max_filesize 1024M
+php_value max_execution_time 120
+php_value max_input_time 240
+php_value session.gc_maxlifetime 604800
+RewriteEngine On
+RewriteRule detail/(.[0-9]*) preload.php?link=detail&id=$1 [L]
+RewriteRule detail/(.[0-9]*)/ preload.php?link=detail&id=$1 [L]
+RewriteRule Saabaru/ preload.php?link=index [L]
+RewriteRule home/ preload.php?link=index [L]
+RewriteRule trylogin/ preload.php?link=trylogin&nostyle=1 [L]
+RewriteRule trysignup/ preload.php?link=trysignup&nostyle=1 [L]
+RewriteRule trypost/ preload.php?link=trypost&nostyle=1 [L]
+RewriteRule trymodify/ preload.php?link=trymodify&nostyle=1 [L]
+RewriteRule tryupload2/ preload.php?link=tryupload2&nostyle=1 [L]
+RewriteRule tryupload/ preload.php?link=tryupload&nostyle=1 [L]
+RewriteRule finishupload/ preload.php?link=finishupload [L]
+RewriteRule uploadfile/ preload.php?link=uploadfile [L]
+RewriteRule add/(.[0-9]*) preload.php?link=add&id=$1&nostyle=1 [L]
+RewriteRule add/(.[0-9]*)/ preload.php?link=add&id=$1&nostyle=1 [L]
+RewriteRule move/(.[0-9]*) preload.php?link=move&id=$1&nostyle=1 [L]
+RewriteRule move/(.[0-9]*)/ preload.php?link=move&id=$1&nostyle=1 [L]
+RewriteRule login/ preload.php?link=login [L]
+RewriteRule logout/ preload.php?link=logout&nostyle=1 [L]
+RewriteRule signup/ preload.php?link=signup [L]
+RewriteRule admin/ preload.php?link=admin [L]
+RewriteRule post/ preload.php?link=post [L]
+RewriteRule motto/ preload.php?link=motto&nostyle=1 [L]
+RewriteRule modify/(.[0-9]*) preload.php?link=modify&id=$1 [L]
+RewriteRule modify/(.[0-9]*)/ preload.php?link=modify&id=$1 [L]
+RewriteRule preview/ preload.php?link=preview&nostyle=1 [L]
+RewriteRule deletecomment/(.[0-9]*) preload.php?link=deletecomment&id=$1&nostyle=1 [L]
+RewriteRule deletecomment/(.[0-9]*)/ preload.php?link=deletecomment&id=$1&nostyle=1 [L]
+RewriteRule comment/ preload.php?link=comment&nostyle=1 [L]
+RewriteRule problems/(.[0-9]*) preload.php?link=problems&p=$1 [L]
+RewriteRule problems/(.[0-9]*)/ preload.php?link=problems&p=$1 [L]
+RewriteRule problems/ preload.php?link=problems [L]
+RewriteRule problem/(.[0-9]*) preload.php?link=problem&id=$1 [L]
+RewriteRule problem/(.[0-9]*)/ preload.php?link=problem&id=$1 [L]
+RewriteRule tryedit/ preload.php?link=tryedit&nostyle=1 [L]
+RewriteRule edit/(.[0-9]*) preload.php?link=edit&id=$1 [L]
+RewriteRule edit/(.[0-9]*)/ preload.php?link=edit&id=$1 [L]
+RewriteRule status/(.[0-9]*) preload.php?link=status&p=$1 [L]
+RewriteRule status/(.[0-9]*)/ preload.php?link=status&p=$1 [L]
+RewriteRule status/ preload.php?link=status [L]
+RewriteRule submit/ preload.php?link=submit&nostyle=1 [L]
+RewriteRule judge/waiting/ preload.php?link=judgewaiting&nostyle=1 [L]
+RewriteRule judge/pull/(.[0-9]*)/(.[0-9]*) preload.php?link=judgepull&sid=$1&result=$2&nostyle=1 [L]
+RewriteRule judge/pull/(.[0-9]*)/(.[0-9]*)/ preload.php?link=judgepull&sid=$1&result=$2&nostyle=1 [L]
+RewriteRule source/(.[0-9]*) preload.php?link=source&id=$1 [L]
+RewriteRule source/(.[0-9]*)/ preload.php?link=source&id=$1 [L]
+RewriteRule user/(.[0-9]*) preload.php?link=user&id=$1 [L]
+RewriteRule user/(.[0-9]*)/ preload.php?link=user&id=$1 [L]
+RewriteRule sex/(.[0-9]*) preload.php?link=sex&id=$1&nostyle=1 [L]
+RewriteRule sex/(.[0-9]*)/ preload.php?link=sex&id=$1&nostyle=1 [L]

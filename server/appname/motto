@@ -1,0 +1,3 @@
+<?php
+	setmotto($_POST["uid"],$_POST["motto"]);
+?>

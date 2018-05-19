@@ -1,0 +1,4 @@
+<?php
+	judgepull($_GET["sid"],$_GET["result"]);
+	header("location:/status/");
+?>

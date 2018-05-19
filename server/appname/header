@@ -1,0 +1,66 @@
+<div class="ui fixed borderless menu" id="filter">
+	<div class="ui container">
+		<a href="/" class="ui header item">
+			<?php
+				echo constant("apptitle");
+			?>
+		</a>
+		<?php
+			if (islogin())
+			{
+				echo "<a href=\"/problems/\" class=\"ui item\">题目</a>\n";
+				echo "<a href=\"/status/\" class=\"ui item\">评测</a>\n";
+			}
+			if (isadmin($_SESSION["account"]))
+			{
+				echo "<a href=\"/post/\" class=\"ui item\">公告</a>\n";
+				echo "<a href=\"/admin/\" class=\"ui item\">管理</a>\n";
+				echo "<a href=\"/uploadfile/\" class=\"ui item\">上传</a>\n";
+			}
+			if (islogin())
+				echo "<a href=\"/logout/\" class=\"ui item\">注销</a>\n";
+			if (!islogin())
+			{
+				echo "<a href=\"/login/\" class=\"ui item\">登录</a>\n";
+				echo "<a href=\"/signup/\" class=\"ui item\">注册</a>\n";
+			}
+		?>
+		<?php
+			if (islogin())
+				echo "<a href=\"/user/".getuid($_SESSION["account"])."\" class=\"ui right item\">".$_SESSION["account"]."</a>\n";
+		?>
+	</div>
+</div>
+<div class="ui fixed borderless menu" style="z-index: 100; background-color: #58B2DC;">
+	<div class="ui container">
+		<a href="/" class="ui header item">
+			<?php
+				echo constant("apptitle");
+			?>
+		</a>
+		<?php
+			if (islogin())
+			{
+				echo "<a href=\"/problems/\" class=\"ui item\">题目</a>\n";
+				echo "<a href=\"/status/\" class=\"ui item\">评测</a>\n";
+			}
+			if (isadmin($_SESSION["account"]))
+			{
+				echo "<a href=\"/post/\" class=\"ui item\">公告</a>\n";
+				echo "<a href=\"/admin/\" class=\"ui item\">管理</a>\n";
+				echo "<a href=\"/uploadfile/\" class=\"ui item\">上传</a>\n";
+			}
+			if (islogin())
+				echo "<a href=\"/logout/\" class=\"ui item\">注销</a>\n";
+			if (!islogin())
+			{
+				echo "<a href=\"/login/\" class=\"ui item\">登录</a>\n";
+				echo "<a href=\"/signup/\" class=\"ui item\">注册</a>\n";
+			}
+		?>
+		<?php
+			if (islogin())
+				echo "<a href=\"/user/".getuid($_SESSION["account"])."\" class=\"ui right item\">".$_SESSION["account"]."</a>\n";
+		?>
+	</div>
+</div>

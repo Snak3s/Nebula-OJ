@@ -1,0 +1,40 @@
+<?php
+	$p=$_GET["p"];
+	if ($p<=0||$p==null)
+		$p=1;
+	$tp=getstatusnum();
+	$tp=floor(($tp+29)/30);
+	if ($p>$tp)
+		$p=$tp;
+?>
+<div class="ui segments">
+	<div class="ui blue clearing top attached segment">
+		<div class="ui medium header">
+			评测记录
+		</div>
+		第 <?php echo $p;?> 页
+	</div>
+	<table class="ui bottom attached center aligned table">
+	<thead class="ui small header">
+		<tr><td>提交编号</td><td>题目</td><td>提交用户</td><td>状态</td><td>提交时间</td><td>语言</td></tr>
+	</thead>
+	<tbody>
+	<?php
+		showstatus($_GET["p"]);
+	?>
+	</tbody>
+	</table>
+</div>
+<div class="ui clearing segment">
+	<?php
+		if ($p>1)
+			echo "<a class=\"ui blue left floated icon circular button\" href=\"/status/".($p-1)."\"><i class=\"chevron left icon\"></i></a>";
+		else
+			echo "<div class=\"ui gray left floated icon circular button\"><i class=\"chevron left icon\"></i></div>";
+		if ($p<$tp)
+			echo "<a class=\"ui blue right floated icon circular button\" href=\"/status/".($p+1)."\"><i class=\"chevron right icon\"></i></a>";
+		else
+			echo "<div class=\"ui gray right floated icon circular button\"><i class=\"chevron right icon\"></i></div>";
+		echo "<div class=\"clear\"></div>";
+	?>
+</div>

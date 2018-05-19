@@ -1,0 +1,9 @@
+<?php
+	if (submissionnotexist($_GET["id"]))
+	{
+		throwerror("无此提交记录。");
+		return;
+	}
+?>
+<pre class="ui segment" style="background-color: #333333;"><a href="/judge/pull/<?php echo $_GET["id"];?>/9"><div class="ui right corner red mini label"><i class="repeat icon"></i></div></a><code><?php echo htmlspecialchars(viewsource($_GET["id"]));?></code></pre>
+<script src="/resources/highlight.js"></script>
